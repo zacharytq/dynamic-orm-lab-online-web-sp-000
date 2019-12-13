@@ -54,6 +54,6 @@ class InteractiveRecord
 
   def self.find_by(options={})
     sql = "SELECT * FROM #{self.table_name} WHERE ? = ?"
-    options.map{|property, name| DB[:conn].execute(sql, property, name)}
+    options.map{|property, name| DB[:conn].execute(sql, property.to_s, name.to_s)}
   end
 end
